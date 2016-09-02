@@ -10,6 +10,6 @@ class BorrowedBooksController < ApplicationController
 
 	#return all borrowed books and the user that borrowed them
 	def all_borrowed_books
-		@books = BorrowedBook.joins(:books)
+		@books = Book.joins(:borrowed_books, :users).uniq
 	end
 end

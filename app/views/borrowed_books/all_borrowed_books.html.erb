@@ -1,5 +1,11 @@
 <% @books.each do |book| %>
-	<%= book.name %> <br/>
-	<%= book.author %>
-	<%= book.return_date %>
+	Name: <%= book.name %> <br/>
+	Author: <%= book.author %> <br/>
+	<!-- So, to access the return day field, I iterate over the books.borrowed books collection -->
+	Return Date: <% book.borrowed_books.each do |borrow| %>
+		<%= borrow.return_date %>
+	<% end %><br/>
+	<% book.users.each do |user| %>
+		<%= user.email %><br/>
+	<% end %>
 <% end %>
