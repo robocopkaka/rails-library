@@ -1,0 +1,9 @@
+<% @books.each do |book| %>
+	Name: <%= book.name %><br/>
+	ISBN: <%= book.isbn %> <br/>
+	Author: <%= book.author %><br/>
+	Description: <%= book.description %> <br/>
+	Quantity: <%= book.quantity %> <br/>
+	Surcharge Fee: <%= book.surcharge_fee %> <br/>
+
+<% end %>

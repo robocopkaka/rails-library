@@ -1,0 +1,22 @@
+<%= form_for @book do |f|%>
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control' %>
+
+	<%= f.label :isbn %>
+	<%= f.text_field :isbn, class: 'form-control' %>
+
+	<%= f.label :author %>
+	<%= f.text_field :author, class: 'form-control' %>
+
+	<%= f.label :description %>
+	<%= f.text_field :description, class: 'form-control' %>
+
+	<%= f.label :quantity %>
+	<%= f.number_field :quantity, class: 'form-control' %>
+
+	<%= f.label :surcharge_fee %>
+	<%= f.number_field :surcharge_fee, class: 'form-control' %>
+
+	<%= f.submit "Save", class: 'btn btn-primary' %>
+
+<% end %>
