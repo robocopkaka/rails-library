@@ -2,6 +2,6 @@
 	Name: <%= book.book.name %> <br/>
 	Author: <%= book.book.author %> <br/>
 	<!-- So, to access the return day field, I iterate over the books.borrowed books collection -->
-	Return Date: <%= book.return_date %><br/>
+	Return Date: <%= book.return_date.to_formatted_s(:long) %><br/>
 	Borrowed by: <%= book.user.email %> <br/> <br/>
 <% end %>
