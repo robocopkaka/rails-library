@@ -1,5 +1,10 @@
 <% @books.each do |book| %>
 	Name: <%= book.book.name %> <br/>
 	Author: <%= book.book.author %><br/>
-	Due Date: <%= book.return_date.to_formatted_s(:long) %><br/> <br/>
+	Due Date: <%= book.return_date.to_formatted_s(:long) %><br/>
+	<% if !book.userHasReturned %>
+		<%= button_to "Return book", user_return_path(book_id: book.book.id) %> <br/>
+	<% else %>
+		<p style="color:green"> Yay! You've returned this book </p> <br/>
+	<% end %>
 <% end %>

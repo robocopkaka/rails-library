@@ -17,4 +17,18 @@ class BorrowedBooksController < ApplicationController
 		# @iteration_variable.book.property or @iteration_variable.user.property 
 		@books = BorrowedBook.includes(:book, :user)
 	end
+
+	def user_return_book
+		@book = BorrowedBook.where("user_id = ? and book_id = ? and userHasReturned = ?", current_user.id, params[:book_id], false).first
+
+		@book.update_attributes(userHasReturned: true)
+		redirect_to user_borrows_path
+	end
+
+	def return_book
+		@book = BorrowedBook.where("user_id = ? and book_id = ? and userHasReturned = ?", params[:user_id], params[:book_id], true).first
+		@book.update_attributes(isReturned: true)
+		Book.find_by_id(params[:book_id]).increment!(:quantity, 1)
+		redirect_to 'all_borrowed_books'
+	end
 end

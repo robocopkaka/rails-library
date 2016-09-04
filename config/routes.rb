@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'borrow' => 'books#borrow'
   get 'user_borrows' => 'borrowed_books#user_borrowed_books'
   get 'borrows' => 'borrowed_books#all_borrowed_books'
+  post 'user_return' => 'borrowed_books#user_return_book'
+  post 'return' => 'borrowed_books#return_book'
 
   root 'books#index'
 
