@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901103630) do
+ActiveRecord::Schema.define(version: 20160904003328) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 20160901103630) do
   create_table "borrowed_books", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "book_id"
-    t.datetime "return_date", default: '2016-09-08 17:47:42'
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "return_date"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "isReturned",      default: false
+    t.boolean  "userHasReturned", default: false
   end
 
   create_table "users", force: :cascade do |t|

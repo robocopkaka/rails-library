@@ -51,6 +51,7 @@ class BooksController < ApplicationController
 				if (@book.isAvailable && @book.quantity >= 1)
 					@book.decrement!(:quantity, 1)
 					current_user.borrowed_books.create(book: @book)
+					BorrowedBook.last.update_attributes(return_date: BorrowedBook.last.created_at + 7.days)
 					redirect_to @book
 					flash[:success] = "Yaay! You've borrowed a book! Make sure you return it when due"
 				else

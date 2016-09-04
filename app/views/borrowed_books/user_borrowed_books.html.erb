@@ -1,5 +1,5 @@
 <% @books.each do |book| %>
-	<%= book.book.name %> <br/>
-	<%= book.book.author %><br/>
-	<%= book.return_date %><br/> <br/>
+	Name: <%= book.book.name %> <br/>
+	Author: <%= book.book.author %><br/>
+	Due Date: <%= book.return_date.to_formatted_s(:long) %><br/> <br/>
 <% end %>
