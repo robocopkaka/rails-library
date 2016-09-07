@@ -1,9 +1,31 @@
-<% @books.each do |book| %>
-	Name: <%= book.name %><br/>
-	ISBN: <%= book.isbn %> <br/>
-	Author: <%= book.author %><br/>
-	Description: <%= book.description %> <br/>
-	Quantity: <%= book.quantity %> <br/>
-	Surcharge Fee: <%= book.surcharge_fee %> <br/>
 
-<% end %>
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-header">
+              <h1>Some featured books
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="section text-center">
+      <div class="container">
+        <div class="row">
+          <% @books.each do |book| %>
+          	
+	          <div class="col-md-6">
+	            
+	          <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
+	            <h1><%= book.name %></h1>
+	            <p></p>
+	            <p><%= book.description %></p>
+	            <p></p>
+	          </div>
+	         
+   		  <% end %>
+        </div>
+      </div>
+    </div>
