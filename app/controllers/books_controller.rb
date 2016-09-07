@@ -38,7 +38,7 @@ class BooksController < ApplicationController
 	end
 
 	def index
-		@books = Book.all
+		@books = Book.all.limit(2)
 	end
 
 	#initial implementation for borrow

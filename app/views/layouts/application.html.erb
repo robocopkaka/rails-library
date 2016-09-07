@@ -2,18 +2,24 @@
 <html>
 <head>
   <title>Library</title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+    rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-	<div class="container">
+<body data-spy="scroll">
+	<%= render 'layouts/mini_header' %>
 		<% flash.each do |message_type, message| %>
 			<div class ="alert alert-<%=message_type%>"><%= message %></div>
 		<% end %>
 	
 
 <%= yield %>
-</div>
+
+<%= render 'layouts/footer' %>
+
 </body>
 </html>
