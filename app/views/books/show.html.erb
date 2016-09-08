@@ -1,7 +1,40 @@
-Name: <%= @book.name %><br/>
-ISBN: <%= @book.isbn %> <br/>
-Author: <%= @book.author %><br/>
-Description: <%= @book.description %> <br/>
-Quantity: <%= @book.quantity %> <br/>
-Surcharge Fee: <%= @book.surcharge_fee %> <br/>
-<%= link_to "Borrow this book", borrow_path(book_id: @book.id) %>
+
+
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-header">
+              <h1><%= @book.name %>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>Description: <%= @book.description %></p>
+            <p>ISBN: <%= @book.isbn %></p>
+            <p>Author: <%= @book.author %></p>
+            <p>Quantity: <%= @book.quantity %></p>
+            <% if @book.isAvailable %>
+	            <%= link_to "Borrow this book", borrow_path(book_id: @book.id) , class: 'btn btn-lg btn-success'%>
+	        <% else %>
+	        	<a class="btn btn-lg btn-danger">This book is currently unavailable</a>
+	        <% end %>
+          </div>
+        </div>
+      </div>
+    </div>

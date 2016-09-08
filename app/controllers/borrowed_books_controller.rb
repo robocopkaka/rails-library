@@ -28,6 +28,9 @@ class BorrowedBooksController < ApplicationController
 	def return_book
 		@returning_book = Book.find(params[:book_id])
 		@returning_book.increment!(:quantity, 1)
+		if(@returning_book.quantity == 1)
+			@returning_book.update_attributes(isAvailable: false)
+		end
 		@book = BorrowedBook.where("user_id = ? and book_id = ? and userHasReturned = ?", params[:user_id], params[:book_id], true).first
 		@book.update_attributes(isReturned: true)
 		redirect_to borrows_path

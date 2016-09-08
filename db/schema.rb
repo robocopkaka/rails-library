@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904003328) do
+ActiveRecord::Schema.define(version: 20160908174608) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20160904003328) do
     t.boolean  "isAvailable",   default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "category_id"
   end
+
+  add_index "books", ["category_id"], name: "index_books_on_category_id"
 
   create_table "borrowed_books", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +37,12 @@ ActiveRecord::Schema.define(version: 20160904003328) do
     t.datetime "updated_at",                      null: false
     t.boolean  "isReturned",      default: false
     t.boolean  "userHasReturned", default: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

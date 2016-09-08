@@ -41,6 +41,10 @@ class BooksController < ApplicationController
 		@books = Book.all.limit(2)
 	end
 
+	def all_books
+		@books = Book.all
+	end
+
 	#initial implementation for borrow
 	# doesn't check if a user has borrowed a particular book before
 	# add that feature later
@@ -50,6 +54,9 @@ class BooksController < ApplicationController
 			if(!BorrowedBook.exists?({user_id: current_user.id, book_id: @book.id}))
 				if (@book.isAvailable && @book.quantity >= 1)
 					@book.decrement!(:quantity, 1)
+					if(@book.quantity == 0)
+						@book.update_attributes(isAvailable:false)
+					end
 					current_user.borrowed_books.create(book: @book)
 					BorrowedBook.last.update_attributes(return_date: BorrowedBook.last.created_at + 7.days)
 					redirect_to @book
@@ -74,7 +81,7 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-	  params.require(:book).permit(:name, :isbn, :author, :description, :quantity, :surcharge_fee)
+	  params.require(:book).permit(:name, :isbn, :author, :description, :quantity, :surcharge_fee, :category_id)
 	end
 
 	def admin

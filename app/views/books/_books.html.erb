@@ -1,0 +1,18 @@
+<div class="section text-center">
+      <div class="container">
+        <div class="row">
+          <% @books.each do |book| %>
+          	
+	          <div class="col-md-6">
+	            
+	          <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
+	            <h1><%= link_to book.name, book_path(book) %></h1>
+	            <p></p>
+	            <p><%= book.description %></p>
+	            <p></p>
+	          </div>
+	         
+   		  <% end %>
+        </div>
+      </div>
+</div>

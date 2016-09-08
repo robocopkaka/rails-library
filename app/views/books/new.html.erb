@@ -17,6 +17,8 @@
 	<%= f.label :surcharge_fee %>
 	<%= f.number_field :surcharge_fee, class: 'form-control' %>
 
+	<%= f.collection_select(:category_id, Category.all, :id, :name) %>
+
 <!--  -->
 
 	<%= f.submit "Save", class: 'btn btn-primary' %>

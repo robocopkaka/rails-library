@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'books/new'
   get 'books/edit'
   get 'books/show'
+  get 'all_books' => 'books#all_books'
   get 'borrow' => 'books#borrow'
   get 'user_borrows' => 'borrowed_books#user_borrowed_books'
   get 'borrows' => 'borrowed_books#all_borrowed_books'
