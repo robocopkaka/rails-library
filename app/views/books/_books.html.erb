@@ -4,9 +4,12 @@
           <% @books.each do |book| %>
           	
 	          <div class="col-md-6">
-	            
-	          <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
-	            <h1><%= link_to book.name, book_path(book) %></h1>
+	          <% if book.image_url.nil? %>  
+		          <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
+		       <% else %>
+		       		<%= image_tag(book.image_url, class: 'img-responsive img-thumbnail') %>
+		       	<% end %>
+		            <h1><%= link_to book.name, book_path(book) %></h1>
 	            <p></p>
 	            <p><%= book.description %></p>
 	            <p></p>

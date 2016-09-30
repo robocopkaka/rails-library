@@ -1,0 +1,32 @@
+<div class="section">
+      <div class="container">
+        <div class="row">
+        <% @books.each do |book| %>
+          <div class="col-md-4">
+            <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive') %>
+            <h2><%= book.book.name %></h2>
+            Author: <%= book.book.author %> <br/>
+            <!-- So, to access the return day field, I iterate over the books.borrowed books collection -->
+            Return Date: <%= book.return_date.to_formatted_s(:long) %><br/>
+            Borrowed by: <%= book.user.email %> <br/>
+
+            <% if !book.userHasReturned && DateTime.now <= book.return_date %>
+
+              <%= button_to "Return book", user_return_path(book_id: book.book.id) %> <br/>
+  
+            <% elsif !book.userHasReturned && DateTime.now > book.return_date %>
+
+              <p style="color:red"> You'll be paying a surcharge fee of <%= book.book.surcharge_fee %> for a late return. Try to do better next time </p>
+
+            <%= button_to "Return book", user_return_path(book_id: book.book.id) %> <br/>
+
+          <% else %>
+
+            <p style="color:green"> Yay! You've returned this book </p> <br/>
+
+          <% end %>
+        </div>
+        <% end %>
+        </div>
+      </div>
+    </div>

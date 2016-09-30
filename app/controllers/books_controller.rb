@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+	require 'rest-client'
 	before_action :admin, only: [:new, :edit]
 	def new
 		@book = Book.new
@@ -73,6 +74,12 @@ class BooksController < ApplicationController
 		end
 	end
 
+	def bestsellers
+		url = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json'
+		response = RestClient.get(url, {params: {"api-key" => "e8d78bf70d704f218a49195e256d25b2"}})
+		@books =  JSON.parse(response.body)
+	end
+
 	def destroy
 		Book.find(params[:id]).destroy
   		flash[:success] = "Book deleted"
@@ -81,7 +88,7 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-	  params.require(:book).permit(:name, :isbn, :author, :description, :quantity, :surcharge_fee, :category_id)
+	  params.require(:book).permit(:name, :isbn, :author, :description, :quantity, :surcharge_fee, :category_id, :image)
 	end
 
 	def admin

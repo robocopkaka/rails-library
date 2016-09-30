@@ -1,15 +1,1 @@
-<% @books.each do |book| %>
-	Name: <%= book.book.name %> <br/>
-	Author: <%= book.book.author %> <br/>
-	<!-- So, to access the return day field, I iterate over the books.borrowed books collection -->
-	Return Date: <%= book.return_date.to_formatted_s(:long) %><br/>
-	Borrowed by: <%= book.user.email %> <br/>
-
-	<% if book.userHasReturned && !book.isReturned && DateTime.now <= book.return_date%>
-		<%= button_to "Complete Return", all_return_path(book_id: book.book.id, user_id: book.user.id) %> <br/> <br/>
-	<% elsif book.userHasReturned && !book.isReturned && DateTime.now > book.return_date
-		 %>
-		 <p>Hey, <%= book.user.email %> is defaulting on his borrowed book. Just to remind you that they're to pay <%= book.book.surcharge_fee %> when the return the book</p>
-		 <%= button_to "Complete Return", all_return_path(book_id: book.book.id, user_id: book.user.id) %> <br/> <br/>
-	<% end %>
-<% end %>
+<%= render 'borrowed_books/all_borrowed_books' %>

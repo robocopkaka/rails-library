@@ -1,7 +1,7 @@
 <div class="section">
       <div class="container">
         <div class="row">
-        <%= @books.each do |book| %>
+        <% @books.each do |book| %>
           <div class="col-md-4">
             <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive') %>
             <h2><%= book.book.name %></h2>
@@ -16,6 +16,8 @@
                %>
                <p>Hey, <%= book.user.email %> is defaulting on his borrowed book. Just to remind you that they're to pay <%= book.book.surcharge_fee %> when the return the book</p>
                <%= button_to "Complete Return", all_return_path(book_id: book.book.id, user_id: book.user.id) %> <br/> <br/>
+            <% else %>
+              <p style="color: green">Book has been returned</p>
             <% end %>
           </div>
         <% end %>

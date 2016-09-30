@@ -16,7 +16,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
+            <% if @book.image_url.nil? %>  
+              <%= image_tag("Sasuke-Shippuden-uchiha-sasuke-22662093-1280-720.jpg", size: '600x500', class: 'img-responsive img-thumbnail') %>
+           <% else %>
+              <%= image_tag(@book.image_url, class: 'img-responsive img-thumbnail') %>
+            <% end %>
           </div>
         </div>
       </div>
