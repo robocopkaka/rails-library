@@ -26,6 +26,9 @@
                             <li>  
                                 <%= link_to "Borrowed Books", user_borrows_path %>
                             </li>
+                            <li>
+                                <%= link_to "Add A Book", new_book_path %>
+                            </li>
                             <% else %>
                               <%= render 'layouts/borrowed_books' %>
                             <% end %>
