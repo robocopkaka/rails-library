@@ -1,12 +1,9 @@
 # README
 ## Description
-> This app tries to automate basic processes shared across libraries,  
-like adding books to the library, and allowing users borrow and return  
-books.
+> This app tries to automate basic processes shared across libraries, like adding books to the library, and allowing users borrow and return books.
 
 ## Installation
-> Clone or download this repo, navigate to the folder in your terminal,  
-and run `bundle install --without production`
+> Clone or download this repo, navigate to the folder in your terminal, and run `bundle install --without production`
 
 ## Dependencies
 * NodeJs - install to avoid an ExecJs error common with Rails 4.2.x versions
