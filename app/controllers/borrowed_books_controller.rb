@@ -19,7 +19,7 @@ class BorrowedBooksController < ApplicationController
 	end
 
 	def user_return_book
-		@book = BorrowedBook.where("user_id = ? and book_id = ? and userHasReturned = ?", current_user.id, params[:book_id], false).first
+		@book = BorrowedBook.where("user_id = ? and book_id = ? and \"userHasReturned\" = ?", current_user.id, params[:book_id], false).first
 
 		@book.update_attributes(userHasReturned: true)
 		redirect_to user_borrows_path
@@ -31,7 +31,7 @@ class BorrowedBooksController < ApplicationController
 		if(@returning_book.quantity == 1)
 			@returning_book.update_attributes(isAvailable: false)
 		end
-		@book = BorrowedBook.where("user_id = ? and book_id = ? and userHasReturned = ?", params[:user_id], params[:book_id], true).first
+		@book = BorrowedBook.where("user_id = ? and book_id = ? and \"userHasReturned\" = ?", params[:user_id], params[:book_id], true).first
 		@book.update_attributes(isReturned: true)
 		redirect_to borrows_path
 	end
